@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>vue01</title>
+</head>
+<body>
+<div id="app">
+    <p v-cloak>{{msg}}</p>
+    <h2 v-text="msg">==================</h2>
+    <div>{{msg2}}</div>
+    <div v-text="msg2"></div>
+    <div v-html="msg2"></div>
+    <!-- v-bind 绑定属性，会把后面引号里面的东西当代吗解决 -->
+    <input type="button" value="按钮" v-bind:title="myTitle+'123'" v-on:mouseover="sayHello"/>
+    <!-- 简写 -->
+    <input type="button" value="按钮简写" :title="myTitle+'123'" v-on:click="sayHello"/>
+    <!-- v-on:   事件绑定机制 -->
+    <input type="button" value="按钮简写" :title="myTitle+'123'" @click="sayHello"/>
+
+</div>
+
+
+<script src="../vue-2.4.0.js" ></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            msg: '渣渣辉',
+            msg2: '<h1>我不系渣渣辉</h1>',
+            myTitle: '这是我的BIAOTI'
+        },
+        methods:{//定义当前vue对象的方法
+            sayHello: function(){
+                alert('helloWorld');
+            }
+        }
+    })
+
+</script>
+</body>
+
+</html>

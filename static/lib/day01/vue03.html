@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>事件修饰符</title>
+    <script src="../vue-2.4.0.js" ></script>
+    <style>
+        .inner{
+            height: 150px;
+            background-color: darkcyan;
+        }
+
+
+
+    </style>
+</head>
+<body>
+<!-- 事件执行顺序有一种冒泡机制 -->
+<!--<div class="inner" id="app" @click.capture="divHandler">
+    <input type="button" value="别点我" @click.stop="btnHandler">
+    <a href="http://www.pingyuanren.club:8080" @click.prevent="linkclick">赵某人的个人博客</a>
+</div>-->
+
+<div class="inner" id="app" @click.slef="divHandler">
+    <input type="button" value="别点我" @click.stop="btnHandler">
+    <a href="http://www.pingyuanren.club:8080" @click.once.prevent="linkclick">赵某人的个人博客</a>
+</div>
+
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            msg: '猥琐发育别浪！',
+            intervalId:null
+        },
+        methods:{//定义当前vue对象的方法
+            divHandler(){
+               console.log('这是div的点击事件')
+            },
+            btnHandler() {
+                console.log('这是btn的点击事件')
+            },
+            linkclick(){
+                alert('不能跳过去');
+            }
+        }
+    })
+
+</script>
+</body>
+
+</html>
